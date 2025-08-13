@@ -4,9 +4,8 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
   font-family: Poppins;
   font-weight: 500;
-  font-style: Medium;
+  font-style: medium;
   font-size: 32px;
-  leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
 }
@@ -36,9 +35,8 @@
   margin: 0;
   font-family: Poppins;
   font-weight: 500;
-  font-style: Medium;
+  font-style: medium;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
   opacity: 0.7;
@@ -61,9 +59,8 @@
   background-color: #fcf5e5;
   font-family: Poppins;
   font-weight: 500;
-  font-style: Medium;
+  font-style: medium;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
 }
@@ -86,9 +83,8 @@
   cursor: pointer;
   font-family: Poppins;
   font-weight: 500;
-  font-style: Medium;
+  font-style: medium;
   font-size: 16px;
-  leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
 }
