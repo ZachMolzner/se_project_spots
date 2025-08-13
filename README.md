@@ -16,6 +16,10 @@ This webpage is deployed to GitHub Pages
 
 - [Deployment Link] (https://syllara123.github.io/se_project_spots)
 
+Video guide
+
+- [Deployment Link] (https://drive.google.com/file/d/1Mr4fH5O4ZTwPe2-oYOVmwKeptqWHdobu/view?usp=sharing)
+
 ---
 
 **Author:** Zachery Molzner
