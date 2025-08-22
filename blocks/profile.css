@@ -67,7 +67,7 @@
 .profile__edit-btn:hover {
   opacity: 1;
 }
-.profile__add-btn {
+.profile__new-post-btn {
   margin-top: auto;
   height: 52px;
   width: 157px;
@@ -120,7 +120,7 @@
     justify-content: center;
     margin-bottom: 20px;
   }
-  .profile__add-btn {
+  .profile__new-post-btn {
     justify-content: center;
     margin: 0;
     width: 100%;
