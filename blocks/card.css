@@ -4,40 +4,42 @@
   justify-content: space-between;
 }
 .card__image {
-  height: 413px;
   width: 413px;
+  height: 413px;
   object-fit: cover;
   display: block;
   border-radius: 8px;
 }
 .card__title {
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-style: medium;
   font-size: 20px;
   line-height: 120%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card__like-btn {
-  background-image: url(../images/like.svg);
   width: 23px;
   height: 20px;
   border: none;
+  background: url(../images/like.svg) no-repeat center/contain;
   background-color: transparent;
   opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 .card__like-btn:hover {
   opacity: 1;
 }
 @media screen and (max-width: 627px) {
   .card__image {
-    height: 288px;
     width: 288px;
+    height: 288px;
   }
   .card__content {
     max-width: 288px;
@@ -45,10 +47,6 @@
   .card__title {
     max-width: 144px;
     font-size: 16px;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
     -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
   }
 }

@@ -3,13 +3,12 @@
   justify-content: center;
   align-items: center;
   color: #212121;
-  opacity: 70%;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  font-family: Poppins;
+  opacity: 0.7;
+  padding: 60px 0;
+
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-  font-style: regular;
   font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 1;
+  letter-spacing: 0;
 }
