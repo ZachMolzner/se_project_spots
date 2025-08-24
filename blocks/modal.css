@@ -106,18 +106,38 @@
   opacity: 0.9;
 }
 @media screen and (max-width: 627px) {
+  .modal__container {
+    max-width: 95%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .modal__title {
+    font-size: 20px;
+    margin: 0 0 20px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .modal__close-btn {
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .modal__form {
+    gap: 16px;
+  }
+
   .modal__submit-btn,
   .modal__input {
     width: 100%;
-    max-width: 627px;
-    box-sizing: border-box;
-  }
-  .modal__title {
-    font-size: 20px;
-    padding: 16px 8px;
-  }
-  .modal__close-btn {
-    top: 40px;
-    right: 50px;
+    max-width: 100%;
   }
 }
