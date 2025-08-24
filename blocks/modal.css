@@ -125,12 +125,6 @@
     width: 32px;
     height: 32px;
   }
-
-  .modal__close-icon {
-    width: 24px;
-    height: 24px;
-  }
-
   .modal__form {
     gap: 16px;
   }
