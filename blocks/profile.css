@@ -48,6 +48,7 @@
   max-width: 420px;
 }
 .profile__edit-btn {
+  width: fit-content;
   opacity: 0.7;
   margin-top: auto;
   display: inline-flex;

@@ -1,3 +1,12 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 413px;
+  border-radius: 8px;
+  overflow: hidden;
+}
 .card__content {
   display: flex;
   align-items: center;
@@ -18,9 +27,23 @@
   letter-spacing: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.card__delete-btn {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: url(../images/delete.svg);
+  cursor: pointer;
+  transition: top 0.3s ease, right 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+.card__delete-btn:hover {
+  background-image: url(../images/delete_hover.svg);
 }
 .card__like-btn {
   width: 23px;
@@ -32,8 +55,17 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
+
 .card__like-btn:hover {
   opacity: 1;
+}
+.card__like-btn_active {
+  background-image: url(../images/pink_like.svg);
+  opacity: 1;
+}
+.card__like-btn_active:hover {
+  background-image: url(../images/pink_like.svg);
+  opacity: 0.4;
 }
 @media screen and (max-width: 627px) {
   .card__image {
