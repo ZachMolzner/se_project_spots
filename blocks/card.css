@@ -18,6 +18,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  cursor: pointer;
 }
 .card__title {
   font-family: "Poppins", sans-serif;

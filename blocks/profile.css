@@ -89,7 +89,7 @@
   line-height: 100%;
   letter-spacing: 0%;
 }
-.profile__add-btn:hover {
+.profile__new.profile__new-post-btn:hover {
   opacity: 0.8;
 }
 @media screen and (max-width: 627px) {

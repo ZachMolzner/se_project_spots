@@ -43,7 +43,9 @@ function closeModal(modal) {
 const previewModal = document.querySelector("#preview-modal");
 const modalImage = previewModal.querySelector(".modal__preview-image");
 const modalCaption = previewModal.querySelector(".modal__caption");
-const modalCloseBtn = previewModal.querySelector(".modal__close_type_preview");
+const modalCloseBtn = previewModal.querySelector(
+  ".modal__close-btn_type_preview"
+);
 
 // Close button for preview modal (top-level as requested)
 modalCloseBtn.addEventListener("click", () => closeModal(previewModal));

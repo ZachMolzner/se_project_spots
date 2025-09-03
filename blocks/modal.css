@@ -1,5 +1,6 @@
 .modal {
   visibility: hidden;
+  opacity: 0;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -10,6 +11,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
 }
 .modal_type_preview {
   padding: 0 16px;
@@ -30,7 +32,6 @@
   background-color: #ffffff;
   padding: 32px 50px;
   position: relative;
-  opacity: 0;
   transform: scale(0.95);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -49,7 +50,7 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
-.modal__close_type_preview {
+.modal__close-btn_type_preview {
   opacity: 1;
   top: 0;
   right: -52.5px;
@@ -58,7 +59,7 @@
 .modal__close-btn:hover {
   opacity: 1;
 }
-.modal__close_type_preview:hover {
+.modal__close-btn_type_preview:hover {
   opacity: 0.4;
 }
 .modal__close-icon {
@@ -173,7 +174,7 @@
     width: 32px;
     height: 32px;
   }
-  .modal__close_type_preview {
+  .modal__close-btn_type_preview {
     top: -48px;
     right: 0;
   }
