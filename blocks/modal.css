@@ -29,7 +29,7 @@
   max-width: 730px;
   width: 100%;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 32px 50px;
   position: relative;
   transform: scale(0.95);
@@ -140,6 +140,7 @@
   border-radius: 8px;
 }
 .modal__caption {
+  margin: 0;
   display: inline-block;
   padding: 4px 8px;
   border-radius: 8px;
@@ -179,8 +180,6 @@
     right: 0;
   }
   .modal__caption {
-    bottom: 4px;
-    left: 4px;
     font-size: 16px;
     padding: 2px 6px;
   }
