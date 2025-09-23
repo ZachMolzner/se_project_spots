@@ -111,11 +111,22 @@
   color: #ff0000b2;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-style: Medium;
+  font-weight: Medium;
   font-size: 16px;
   line-height: 110.00000000000001%;
   letter-spacing: 0%;
 }
+
+.modal__input_type_error {
+  border-color: #ff0000b2;
+  outline: none;
+}
+
+.modal__error_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
 .modal__submit-btn {
   max-width: 156px;
   max-height: 52px;

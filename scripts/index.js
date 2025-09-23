@@ -31,10 +31,12 @@ const initialCards = [
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 const previewModal = document.querySelector("#preview-modal");
@@ -145,14 +147,4 @@ function handleEscClose(evt) {
       closeModal(openedModal);
     }
   }
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_is-opened");
-  document.addEventListener("keydown", handleEscClose);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", handleEscClose);
 }

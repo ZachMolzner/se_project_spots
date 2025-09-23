@@ -4,7 +4,7 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
   font-family: Poppins;
   font-weight: 500;
-  font-style: medium;
+  font-weight: medium;
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -89,7 +89,7 @@
   line-height: 100%;
   letter-spacing: 0%;
 }
-.profile__new.profile__new-post-btn:hover {
+.profile__new-post-btn:hover {
   opacity: 0.8;
 }
 @media screen and (max-width: 627px) {
