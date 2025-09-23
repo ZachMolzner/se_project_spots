@@ -37,9 +37,6 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
-// -------------------------------------------------
-// Preview modal selections
-// -------------------------------------------------
 const previewModal = document.querySelector("#preview-modal");
 const modalImage = previewModal.querySelector(".modal__preview-image");
 const modalCaption = previewModal.querySelector(".modal__caption");
@@ -47,12 +44,8 @@ const modalCloseBtn = previewModal.querySelector(
   ".modal__close-btn_type_preview"
 );
 
-// Close button for preview modal (top-level as requested)
 modalCloseBtn.addEventListener("click", () => closeModal(previewModal));
 
-// -------------------------------------------------
-// Edit Profile modal selections
-// -------------------------------------------------
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -66,9 +59,6 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-// -------------------------------------------------
-// New Post modal selections
-// -------------------------------------------------
 const newPostBtn = document.querySelector(".profile__new-post-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
@@ -76,9 +66,6 @@ const newPostForm = newPostModal.querySelector(".modal__form");
 const newPostLink = newPostModal.querySelector("#card-image-input");
 const newPostCaption = newPostModal.querySelector("#card-caption-input");
 
-// -------------------------------------------------
-// Cards
-// -------------------------------------------------
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
@@ -92,12 +79,10 @@ function getCardElement(cardData) {
   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
 
-  // Fill in content
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
 
-  // Open preview modal on image click
   cardImageEl.addEventListener("click", () => {
     modalCaption.textContent = cardData.name;
     modalImage.src = cardData.link;
@@ -105,22 +90,16 @@ function getCardElement(cardData) {
     openModal(previewModal);
   });
 
-  // Like toggle
   cardLikeBtnEl.addEventListener("click", () => {
     cardLikeBtnEl.classList.toggle("card__like-btn_active");
   });
 
-  // Delete card
   cardDeleteBtnEl.addEventListener("click", () => {
     cardDeleteBtnEl.closest(".card").remove();
   });
 
   return cardElement;
 }
-
-// -------------------------------------------------
-// Edit Profile events
-// -------------------------------------------------
 editProfileBtn.addEventListener("click", () => {
   openModal(editProfileModal);
   editProfileNameInput.value = profileNameEl.textContent;
@@ -137,10 +116,6 @@ editProfileForm.addEventListener("submit", (evt) => {
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   closeModal(editProfileModal);
 });
-
-// -------------------------------------------------
-// New Post events
-// -------------------------------------------------
 newPostBtn.addEventListener("click", () => openModal(newPostModal));
 newPostCloseBtn.addEventListener("click", () => closeModal(newPostModal));
 
@@ -158,11 +133,26 @@ newPostForm.addEventListener("submit", (evt) => {
   closeModal(newPostModal);
   newPostForm.reset();
 });
-
-// -------------------------------------------------
-// Render initial cards
-// -------------------------------------------------
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal.modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
+}

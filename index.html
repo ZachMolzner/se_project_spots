@@ -67,26 +67,47 @@
             />
           </button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form">
+          <form class="modal__form" name="edit-profile" novalidate>
             <label for="profile-name-input" class="modal__label">
               Name
               <input
                 id="profile-name-input"
+                name="name"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
                 required
+                minlength="2"
+                maxlength="40"
+                aria-describedby="profile-name-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="profile-name-input-error"
+                aria-live="polite"
+              ></span>
             </label>
+
             <label for="profile-description-input" class="modal__label">
               Description
               <input
                 id="profile-description-input"
+                name="description"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
+                required
+                minlength="2"
+                maxlength="200"
+                aria-describedby="profile-description-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="profile-description-input-error"
+                aria-live="polite"
+              ></span>
             </label>
+
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
@@ -101,27 +122,45 @@
             />
           </button>
           <h2 class="modal__title">New post</h2>
-          <form class="modal__form" id="card-form">
+          <form class="modal__form" id="card-form" name="new-card" novalidate>
             <label for="card-image-input" class="modal__label">
               Image link
               <input
                 id="card-image-input"
+                name="link"
                 type="url"
                 class="modal__input"
                 placeholder="Place a link to the picture"
                 required
+                aria-describedby="card-image-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="card-image-input-error"
+                aria-live="polite"
+              ></span>
             </label>
+
             <label for="card-caption-input" class="modal__label">
               Caption
               <input
                 id="card-caption-input"
+                name="caption"
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
                 required
+                minlength="2"
+                maxlength="30"
+                aria-describedby="card-caption-input-error"
               />
+              <span
+                class="modal__input-error"
+                id="card-caption-input-error"
+                aria-live="polite"
+              ></span>
             </label>
+
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
@@ -144,5 +183,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>

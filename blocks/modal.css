@@ -104,6 +104,18 @@
 .modal__input::placeholder {
   color: #2121214d;
 }
+
+.modal__input-error {
+  display: block;
+  margin-top: 8px;
+  color: #ff0000b2;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+}
 .modal__submit-btn {
   max-width: 156px;
   max-height: 52px;
@@ -123,6 +135,13 @@
 }
 .modal__submit-btn:hover {
   opacity: 0.9;
+}
+.modal__submit-btn:disabled,
+.modal__submit-btn_disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .modal__image-container {
