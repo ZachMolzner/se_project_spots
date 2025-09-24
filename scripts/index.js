@@ -106,6 +106,7 @@ editProfileBtn.addEventListener("click", () => {
   openModal(editProfileModal);
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(editProfileForm, settings);
 });
 
 editProfileCloseBtn.addEventListener("click", () =>
@@ -134,6 +135,7 @@ newPostForm.addEventListener("submit", (evt) => {
 
   closeModal(newPostModal);
   newPostForm.reset();
+  resetValidation(newPostForm, settings);
 });
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);

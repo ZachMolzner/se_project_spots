@@ -26,6 +26,7 @@
   transform: scale(1);
 }
 .modal__container {
+  box-sizing: border-box;
   max-width: 730px;
   width: 100%;
   border-radius: 8px;
@@ -187,9 +188,7 @@
 
 @media screen and (max-width: 627px) {
   .modal__container {
-    max-width: 95%;
-    padding: 20px;
-    border-radius: 12px;
+    padding: 22px 12px 12px;
   }
 
   .modal__title {
