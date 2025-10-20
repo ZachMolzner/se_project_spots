@@ -9,13 +9,40 @@ export default class Api {
 
   _request(path, options = {}) {
     const url = `${this.#baseUrl}${path}`;
-    const opts = {
-      headers: this.#headers,
-      ...options,
+
+    const hasBody = options.body !== undefined && options.body !== null;
+    const headers = {
+      ...this.#headers,
+      ...(hasBody ? { "Content-Type": "application/json" } : {}),
+      ...(options.headers || {}),
     };
-    return fetch(url, opts).then((res) => {
-      if (res.ok) return res.json();
-      return Promise.reject(`Error: ${res.status} ${res.statusText}`);
+
+    const opts = { ...options, headers };
+
+    return fetch(url, opts).then(async (res) => {
+      if (!res.ok) {
+        let detail = "";
+        try {
+          const ct = res.headers.get("content-type") || "";
+          if (ct.includes("application/json")) {
+            const j = await res.json();
+            detail = typeof j === "string" ? j : JSON.stringify(j);
+          } else {
+            detail = await res.text();
+          }
+        } catch (_) {}
+        return Promise.reject(
+          `Error ${res.status} ${res.statusText}${detail ? ` — ${detail}` : ""}`
+        );
+      }
+
+      const contentLength = res.headers.get("content-length");
+      const contentType = res.headers.get("content-type") || "";
+
+      if (res.status === 204 || contentLength === "0") return null;
+      if (!contentType.includes("application/json")) return null;
+
+      return res.json();
     });
   }
 

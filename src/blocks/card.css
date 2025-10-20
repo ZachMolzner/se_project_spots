@@ -2,19 +2,19 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: 100%;
   max-width: 413px;
   border-radius: 8px;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
 .card__image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  height: auto;
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -33,12 +33,12 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 120%;
-  letter-spacing: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card__likes {
@@ -48,17 +48,17 @@
 }
 
 .card__delete-button {
-  width: 32px;
-  height: 32px;
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 32px;
+  height: 32px;
   border: none;
-  background: url(../images/delete.svg) no-repeat center / contain;
-  background-color: transparent;
+  background: transparent url("../images/delete.svg") no-repeat center / contain;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.05s ease;
 }
+
 .card__delete-button:hover {
   opacity: 0.8;
 }
@@ -69,20 +69,21 @@
   outline: 2px solid #212121;
   outline-offset: 2px;
 }
+
 .card__delete-button:hover {
-  background-image: url(../images/delete_hover.svg);
+  background-image: url("../images/delete_hover.svg");
 }
 
 .card__like-button {
   width: 23px;
   height: 20px;
   border: none;
-  background: url(../images/like.svg) no-repeat center / contain;
-  background-color: transparent;
+  background: transparent url("../images/like.svg") no-repeat center / contain;
   opacity: 0.4;
   cursor: pointer;
   transition: opacity 0.2s ease, transform 0.05s ease;
 }
+
 .card__like-button:hover {
   opacity: 1;
 }
@@ -95,11 +96,11 @@
 }
 
 .card__like-button_active {
-  background-image: url(../images/pink_like.svg);
+  background-image: url("../images/pink_like.svg");
   opacity: 1;
 }
 .card__like-button_active:hover {
-  background-image: url(../images/pink_like.svg);
+  background-image: url("../images/pink_like.svg");
   opacity: 0.8;
 }
 
@@ -118,11 +119,13 @@
   .card {
     max-width: 288px;
   }
+
   .card__content {
     max-width: 288px;
     margin-left: auto;
     margin-right: auto;
   }
+
   .card__title {
     font-size: 16px;
     -webkit-line-clamp: 1;

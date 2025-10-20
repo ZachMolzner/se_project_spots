@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Spots</title>
     <meta
       name="description"
@@ -24,7 +24,7 @@
       <header class="header">
         <img
           src="<%= require('./images/logo.svg') %>"
-          alt="Spot logo"
+          alt="Spots logo"
           class="header__logo"
         />
       </header>
@@ -42,7 +42,11 @@
               class="profile__avatar-edit-btn"
               aria-label="Edit avatar"
             >
-              <img src="<%= require('./images/edit_icon.svg') %>" alt="" />
+              <img
+                src="<%= require('./images/edit_icon.svg') %>"
+                alt=""
+                aria-hidden="true"
+              />
             </button>
           </div>
 
@@ -52,14 +56,20 @@
             <button type="button" class="profile__edit-btn">
               <img
                 src="<%= require('./images/edit_icon.svg') %>"
-                alt="Pencil icon"
-              />Edit Profile
+                alt=""
+                aria-hidden="true"
+              />
+              Edit Profile
             </button>
           </div>
 
           <button type="button" class="profile__new-post-btn">
-            <img src="<%= require('./images/plus.svg') %>" alt="Plus icon" />New
-            Post
+            <img
+              src="<%= require('./images/plus.svg') %>"
+              alt=""
+              aria-hidden="true"
+            />
+            New Post
           </button>
         </section>
 
@@ -91,19 +101,25 @@
       </main>
 
       <footer class="footer">
-        <p class="footer__copyright">2023 &copy; Spots</p>
+        <p class="footer__copyright">2025 &copy; Spots</p>
       </footer>
 
       <div class="modal" id="edit-profile-modal">
-        <div class="modal__container">
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="edit-profile-title"
+        >
           <button type="button" class="modal__close-btn" aria-label="Close">
             <img
               src="<%= require('./images/close.svg') %>"
-              alt="close"
+              alt=""
+              aria-hidden="true"
               class="modal__close-icon"
             />
           </button>
-          <h2 class="modal__title">Edit profile</h2>
+          <h2 class="modal__title" id="edit-profile-title">Edit profile</h2>
           <form
             class="modal__form"
             id="edit-profile-form"
@@ -156,15 +172,21 @@
       </div>
 
       <div class="modal" id="new-post-modal">
-        <div class="modal__container">
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="new-post-title"
+        >
           <button type="button" class="modal__close-btn" aria-label="Close">
             <img
               src="<%= require('./images/close.svg') %>"
-              alt="close"
+              alt=""
+              aria-hidden="true"
               class="modal__close-icon"
             />
           </button>
-          <h2 class="modal__title">New post</h2>
+          <h2 class="modal__title" id="new-post-title">New post</h2>
           <form
             class="modal__form"
             id="add-card-form"
@@ -215,15 +237,21 @@
       </div>
 
       <div class="modal" id="delete-card-modal">
-        <div class="modal__container">
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="delete-card-title"
+        >
           <button type="button" class="modal__close-btn" aria-label="Close">
             <img
               src="<%= require('./images/close.svg') %>"
-              alt="close"
+              alt=""
+              aria-hidden="true"
               class="modal__close-icon"
             />
           </button>
-          <h2 class="modal__title">Are you sure?</h2>
+          <h2 class="modal__title" id="delete-card-title">Are you sure?</h2>
           <form class="modal__form" id="delete-card-form" novalidate>
             <button type="submit" class="modal__submit-btn">Yes</button>
           </form>
@@ -231,15 +259,21 @@
       </div>
 
       <div class="modal" id="edit-avatar-modal">
-        <div class="modal__container">
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="edit-avatar-title"
+        >
           <button type="button" class="modal__close-btn" aria-label="Close">
             <img
               src="<%= require('./images/close.svg') %>"
-              alt="close"
+              alt=""
+              aria-hidden="true"
               class="modal__close-icon"
             />
           </button>
-          <h2 class="modal__title">Update avatar</h2>
+          <h2 class="modal__title" id="edit-avatar-title">Update avatar</h2>
           <form class="modal__form" id="edit-avatar-form" novalidate>
             <label for="avatar-url-input" class="modal__label">
               Avatar URL
@@ -265,7 +299,12 @@
     </div>
 
     <div class="modal modal_type_preview" id="preview-modal">
-      <div class="modal__image-container">
+      <div
+        class="modal__image-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="preview-caption"
+      >
         <button
           type="button"
           class="modal__close-btn modal__close-btn_type_preview"
@@ -273,12 +312,13 @@
         >
           <img
             src="<%= require('./images/white_close.svg') %>"
-            alt="close"
+            alt=""
+            aria-hidden="true"
             class="modal__close-icon"
           />
         </button>
-        <img src="#" alt="#" class="modal__preview-image" />
-        <p class="modal__caption">Golden Gate Bridge</p>
+        <img src="#" alt="" class="modal__preview-image" />
+        <p class="modal__caption" id="preview-caption"></p>
       </div>
     </div>
   </body>
