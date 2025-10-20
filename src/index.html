@@ -28,16 +28,27 @@
           class="header__logo"
         />
       </header>
+
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%= require('./images/avatar.jpg') %>"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-wrap">
+            <img
+              src="<%= require('./images/avatar.jpg') %>"
+              alt="User avatar"
+              class="profile__avatar"
+            />
+            <button
+              type="button"
+              class="profile__avatar-edit-btn"
+              aria-label="Edit avatar"
+            >
+              <img src="<%= require('./images/edit_icon.svg') %>" alt="" />
+            </button>
+          </div>
+
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
-            <p class="profile__description">Civil Aviator</p>
+            <p class="profile__job">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
               <img
                 src="<%= require('./images/edit_icon.svg') %>"
@@ -45,6 +56,7 @@
               />Edit Profile
             </button>
           </div>
+
           <button type="button" class="profile__new-post-btn">
             <img src="<%= require('./images/plus.svg') %>" alt="Plus icon" />New
             Post
@@ -56,10 +68,21 @@
             <template id="card-template">
               <li class="card">
                 <img src="#" alt="" class="card__image" />
-                <button class="card__delete-btn" type="button"></button>
+                <button
+                  class="card__delete-button"
+                  type="button"
+                  aria-label="Delete card"
+                ></button>
                 <div class="card__content">
                   <h2 class="card__title"></h2>
-                  <button type="button" class="card__like-btn"></button>
+                  <div class="card__likes">
+                    <button
+                      type="button"
+                      class="card__like-button"
+                      aria-label="Like card"
+                    ></button>
+                    <span class="card__like-count">0</span>
+                  </div>
                 </div>
               </li>
             </template>
@@ -73,7 +96,7 @@
 
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn">
+          <button type="button" class="modal__close-btn" aria-label="Close">
             <img
               src="<%= require('./images/close.svg') %>"
               alt="close"
@@ -81,7 +104,12 @@
             />
           </button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form" name="edit-profile" novalidate>
+          <form
+            class="modal__form"
+            id="edit-profile-form"
+            name="edit-profile"
+            novalidate
+          >
             <label for="profile-name-input" class="modal__label">
               Name
               <input
@@ -106,7 +134,7 @@
               Description
               <input
                 id="profile-description-input"
-                name="description"
+                name="about"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
@@ -129,7 +157,7 @@
 
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn">
+          <button type="button" class="modal__close-btn" aria-label="Close">
             <img
               src="<%= require('./images/close.svg') %>"
               alt="close"
@@ -137,7 +165,12 @@
             />
           </button>
           <h2 class="modal__title">New post</h2>
-          <form class="modal__form" id="card-form" name="new-card" novalidate>
+          <form
+            class="modal__form"
+            id="add-card-form"
+            name="new-card"
+            novalidate
+          >
             <label for="card-image-input" class="modal__label">
               Image link
               <input
@@ -160,7 +193,7 @@
               Caption
               <input
                 id="card-caption-input"
-                name="caption"
+                name="title"
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
@@ -180,6 +213,55 @@
           </form>
         </div>
       </div>
+
+      <div class="modal" id="delete-card-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn" aria-label="Close">
+            <img
+              src="<%= require('./images/close.svg') %>"
+              alt="close"
+              class="modal__close-icon"
+            />
+          </button>
+          <h2 class="modal__title">Are you sure?</h2>
+          <form class="modal__form" id="delete-card-form" novalidate>
+            <button type="submit" class="modal__submit-btn">Yes</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal" id="edit-avatar-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn" aria-label="Close">
+            <img
+              src="<%= require('./images/close.svg') %>"
+              alt="close"
+              class="modal__close-icon"
+            />
+          </button>
+          <h2 class="modal__title">Update avatar</h2>
+          <form class="modal__form" id="edit-avatar-form" novalidate>
+            <label for="avatar-url-input" class="modal__label">
+              Avatar URL
+              <input
+                id="avatar-url-input"
+                name="avatar"
+                type="url"
+                class="modal__input"
+                placeholder="https://example.com/me.png"
+                required
+                aria-describedby="avatar-url-input-error"
+              />
+              <span
+                class="modal__input-error"
+                id="avatar-url-input-error"
+                aria-live="polite"
+              ></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div class="modal modal_type_preview" id="preview-modal">
@@ -187,6 +269,7 @@
         <button
           type="button"
           class="modal__close-btn modal__close-btn_type_preview"
+          aria-label="Close"
         >
           <img
             src="<%= require('./images/white_close.svg') %>"

@@ -1,30 +1,34 @@
 .modal {
   visibility: hidden;
   opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   transition: visibility 0.3s ease, opacity 0.3s ease;
 }
+
 .modal_type_preview {
   padding: 0 16px;
 }
+
 .modal_is-opened {
   visibility: visible;
   opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.3s ease;
 }
+
 .modal_is-opened .modal__container {
   opacity: 1;
   transform: scale(1);
 }
+
 .modal__container {
   box-sizing: border-box;
   max-width: 730px;
@@ -34,8 +38,10 @@
   padding: 32px 50px;
   position: relative;
   transform: scale(0.95);
+  opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .modal__close-btn {
   position: absolute;
   top: 32px;
@@ -51,23 +57,33 @@
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
+
+.modal__close-btn:hover {
+  opacity: 1;
+}
+
+.modal__close-btn:focus-visible {
+  outline: 2px solid #212121;
+  outline-offset: 2px;
+}
+
 .modal__close-btn_type_preview {
   opacity: 1;
   top: 0;
   right: -52.5px;
   transition: top 0.3s ease, right 0.3s ease, transform 0.3s ease;
 }
-.modal__close-btn:hover {
-  opacity: 1;
-}
+
 .modal__close-btn_type_preview:hover {
   opacity: 0.4;
 }
+
 .modal__close-icon {
   width: 40px;
   height: 40px;
   display: block;
 }
+
 .modal__title {
   margin: 0 0 32px;
   font-family: "Poppins", sans-serif;
@@ -76,6 +92,7 @@
   line-height: 1;
   letter-spacing: 0;
 }
+
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -85,9 +102,11 @@
   line-height: 1.1;
   letter-spacing: 0;
 }
+
 .modal__label {
   margin: 0 0 32px;
 }
+
 .modal__input {
   display: block;
   width: 100%;
@@ -99,11 +118,16 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
-  letter-spacing: 0;
   box-sizing: border-box;
 }
+
 .modal__input::placeholder {
   color: #2121214d;
+}
+
+.modal__input:focus-visible {
+  outline: 2px solid #212121;
+  outline-offset: 2px;
 }
 
 .modal__input-error {
@@ -112,10 +136,9 @@
   color: #ff0000b2;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-weight: Medium;
   font-size: 16px;
-  line-height: 110.00000000000001%;
-  letter-spacing: 0%;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
 .modal__input_type_error {
@@ -123,7 +146,7 @@
   outline: none;
 }
 
-.modal__error_visible {
+.modal__input-error_visible {
   visibility: visible;
   opacity: 1;
 }
@@ -139,15 +162,25 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
-  letter-spacing: 0;
   border: none;
   cursor: pointer;
   margin: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.05s ease;
 }
+
 .modal__submit-btn:hover {
   opacity: 0.9;
 }
+
+.modal__submit-btn:active {
+  transform: translateY(1px);
+}
+
+.modal__submit-btn:focus-visible {
+  outline: 2px solid #212121;
+  outline-offset: 2px;
+}
+
 .modal__submit-btn:disabled,
 .modal__submit-btn_disabled {
   background-color: #ccc;
@@ -170,20 +203,34 @@
   display: block;
   border-radius: 8px;
 }
+
 .modal__caption {
   margin: 0;
   display: inline-block;
   padding: 4px 8px;
   border-radius: 8px;
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 32px;
   color: white;
-  text-align: left;
   background-color: #212121;
+  text-align: left;
   transition: bottom 0.3s ease, left 0.3s ease, font-size 0.3s ease,
     padding 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal_is-opened,
+  .modal__container,
+  .modal__close-btn_type_preview,
+  .modal__caption {
+    transition: none !important;
+  }
+  .modal__container {
+    transform: none !important;
+  }
 }
 
 @media screen and (max-width: 627px) {
@@ -204,14 +251,17 @@
     width: 32px;
     height: 32px;
   }
+
   .modal__close-btn_type_preview {
     top: -48px;
     right: 0;
   }
+
   .modal__caption {
     font-size: 16px;
     padding: 2px 6px;
   }
+
   .modal__form {
     gap: 16px;
   }

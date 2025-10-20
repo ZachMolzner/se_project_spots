@@ -6,21 +6,27 @@
   max-width: 413px;
   border-radius: 8px;
   overflow: hidden;
+  box-sizing: border-box;
 }
-.card__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 12px;
-}
+
 .card__image {
-  width: 413px;
-  height: 413px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
   object-fit: cover;
   display: block;
   border-radius: 8px;
   cursor: pointer;
 }
+
+.card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
 .card__title {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -34,52 +40,90 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.card__delete-btn {
+
+.card__likes {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card__delete-button {
   width: 32px;
   height: 32px;
   position: absolute;
   top: 10px;
   right: 10px;
   border: none;
-  background: url(../images/delete.svg);
+  background: url(../images/delete.svg) no-repeat center / contain;
+  background-color: transparent;
   cursor: pointer;
-  transition: top 0.3s ease, right 0.3s ease, width 0.3s ease, height 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.05s ease;
 }
-.card__delete-btn:hover {
+.card__delete-button:hover {
+  opacity: 0.8;
+}
+.card__delete-button:active {
+  transform: translateY(1px);
+}
+.card__delete-button:focus-visible {
+  outline: 2px solid #212121;
+  outline-offset: 2px;
+}
+.card__delete-button:hover {
   background-image: url(../images/delete_hover.svg);
 }
-.card__like-btn {
+
+.card__like-button {
   width: 23px;
   height: 20px;
   border: none;
-  background: url(../images/like.svg) no-repeat center/contain;
+  background: url(../images/like.svg) no-repeat center / contain;
   background-color: transparent;
   opacity: 0.4;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.05s ease;
+}
+.card__like-button:hover {
+  opacity: 1;
+}
+.card__like-button:active {
+  transform: translateY(1px);
+}
+.card__like-button:focus-visible {
+  outline: 2px solid #212121;
+  outline-offset: 2px;
 }
 
-.card__like-btn:hover {
-  opacity: 1;
-}
-.card__like-btn_active {
+.card__like-button_active {
   background-image: url(../images/pink_like.svg);
   opacity: 1;
 }
-.card__like-btn_active:hover {
+.card__like-button_active:hover {
   background-image: url(../images/pink_like.svg);
-  opacity: 0.4;
+  opacity: 0.8;
 }
+
+.card__like-count {
+  min-width: 1ch;
+  text-align: right;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  color: #212121;
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 627px) {
-  .card__image {
-    width: 288px;
-    height: 288px;
+  .card {
+    max-width: 288px;
   }
   .card__content {
     max-width: 288px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .card__title {
-    max-width: 144px;
     font-size: 16px;
     -webkit-line-clamp: 1;
   }
