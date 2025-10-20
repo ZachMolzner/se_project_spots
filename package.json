@@ -5,6 +5,7 @@
   "homepage": "https://ZachMolzner.github.io/se_project_spots/",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack serve --mode development --open",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
     "deploy": "gh-pages --no-history -d dist"

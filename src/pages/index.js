@@ -1,4 +1,6 @@
-import "./index.css";
+import "../vendor/normalize.css";
+import "../vendor/fonts.css";
+import "../pages/index.css";
 import Api from "../utils/Api.js";
 import { enableValidation, resetValidation } from "../scripts/validation.js";
 import { validationConfig } from "../scripts/constants.js";
