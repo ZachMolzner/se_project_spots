@@ -1,4 +1,8 @@
 .DS_Store
 node_modules/
 dist/
+<<<<<<< HEAD
 .env
+=======
+.env
+>>>>>>> spots-final
