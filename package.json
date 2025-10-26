@@ -1,7 +1,6 @@
 {
   "name": "se_project_spots",
   "version": "0.1.0",
-<<<<<<< HEAD
   "description": "Spots project configured with Webpack, Babel, and PostCSS",
   "main": "index.js",
   "scripts": {
@@ -10,17 +9,6 @@
   },
   "author": "Zach Molzner",
   "license": "ISC",
-=======
-  "author": "Zach Molzner",
-  "license": "ISC",
-  "homepage": "https://ZachMolzner.github.io/se_project_spots",
-  "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
->>>>>>> spots-final
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
@@ -29,10 +17,6 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
     "cssnano": "^7.1.1",
-<<<<<<< HEAD
-=======
-    "gh-pages": "^6.3.0",
->>>>>>> spots-final
     "html-webpack-plugin": "^5.6.4",
     "mini-css-extract-plugin": "^2.9.4",
     "postcss-loader": "^8.2.0",
