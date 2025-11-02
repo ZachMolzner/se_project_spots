@@ -15,6 +15,35 @@
   height: 190px;
   border-radius: 8px;
 }
+.profile__avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile__avatar-edit-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit-btn {
+  opacity: 1;
+}
+
+.profile__avatar-edit-icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(1);
+}
+
 .profile__column {
   display: flex;
   flex-direction: column;

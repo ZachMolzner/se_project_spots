@@ -19,57 +19,78 @@
       sizes="any"
     />
   </head>
+
   <body>
     <div class="page">
       <header class="header">
         <img
           src="<%= require('./images/logo.svg') %>"
-          alt="Spot logo"
+          alt="Spots logo"
           class="header__logo"
         />
       </header>
+
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%= require('./images/avatar.jpg') %>"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%= require('./images/avatar.jpg') %>"
+              alt="User avatar"
+              class="profile__avatar"
+            />
+            <button
+              type="button"
+              class="profile__avatar-edit-btn"
+              aria-label="Edit avatar"
+            >
+              <img
+                src="<%= require('./images/edit_icon.svg') %>"
+                alt="Edit"
+                class="profile__avatar-edit-icon"
+              />
+            </button>
+          </div>
+
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
               <img
                 src="<%= require('./images/edit_icon.svg') %>"
-                alt="Pencil icon"
-              />Edit Profile
+                alt="Edit icon"
+              />
+              Edit Profile
             </button>
           </div>
+
           <button type="button" class="profile__new-post-btn">
-            <img src="<%= require('./images/plus.svg') %>" alt="Plus icon" />New
-            Post
+            <img src="<%= require('./images/plus.svg') %>" alt="Plus icon" />
+            New Post
           </button>
         </section>
 
         <section class="cards page__section">
-          <ul class="cards__list">
-            <template id="card-template">
-              <li class="card">
-                <img src="#" alt="" class="card__image" />
-                <button class="card__delete-btn" type="button"></button>
-                <div class="card__content">
-                  <h2 class="card__title"></h2>
-                  <button type="button" class="card__like-btn"></button>
-                </div>
-              </li>
-            </template>
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
 
       <footer class="footer">
         <p class="footer__copyright">2023 &copy; Spots</p>
       </footer>
+
+      <template id="card-template">
+        <li class="card">
+          <img src="#" alt="" class="card__image" />
+          <button class="card__delete-btn" type="button"></button>
+          <div class="card__content">
+            <h2 class="card__title"></h2>
+            <div class="card__like-section">
+              <button type="button" class="card__like-btn"></button>
+              <span class="card__like-count">0</span>
+            </div>
+          </div>
+        </li>
+      </template>
 
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
@@ -80,6 +101,7 @@
               class="modal__close-icon"
             />
           </button>
+
           <h2 class="modal__title">Edit profile</h2>
           <form class="modal__form" name="edit-profile" novalidate>
             <label for="profile-name-input" class="modal__label">
@@ -106,7 +128,7 @@
               Description
               <input
                 id="profile-description-input"
-                name="description"
+                name="about"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
@@ -136,8 +158,29 @@
               class="modal__close-icon"
             />
           </button>
+
           <h2 class="modal__title">New post</h2>
           <form class="modal__form" id="card-form" name="new-card" novalidate>
+            <label for="card-caption-input" class="modal__label">
+              Caption
+              <input
+                id="card-caption-input"
+                name="title"
+                type="text"
+                class="modal__input"
+                placeholder="Type your caption"
+                required
+                minlength="2"
+                maxlength="30"
+                aria-describedby="card-caption-input-error"
+              />
+              <span
+                class="modal__input-error"
+                id="card-caption-input-error"
+                aria-live="polite"
+              ></span>
+            </label>
+
             <label for="card-image-input" class="modal__label">
               Image link
               <input
@@ -156,46 +199,97 @@
               ></span>
             </label>
 
-            <label for="card-caption-input" class="modal__label">
-              Caption
-              <input
-                id="card-caption-input"
-                name="caption"
-                type="text"
-                class="modal__input"
-                placeholder="Type your caption"
-                required
-                minlength="2"
-                maxlength="30"
-                aria-describedby="card-caption-input-error"
-              />
-              <span
-                class="modal__input-error"
-                id="card-caption-input-error"
-                aria-live="polite"
-              ></span>
-            </label>
-
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
       </div>
-    </div>
 
-    <div class="modal modal_type_preview" id="preview-modal">
-      <div class="modal__image-container">
-        <button
-          type="button"
-          class="modal__close-btn modal__close-btn_type_preview"
-        >
-          <img
-            src="<%= require('./images/white_close.svg') %>"
-            alt="close"
-            class="modal__close-icon"
-          />
-        </button>
-        <img src="#" alt="#" class="modal__preview-image" />
-        <p class="modal__caption">Golden Gate Bridge</p>
+      <div class="modal" id="edit-avatar-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn">
+            <img
+              src="<%= require('./images/close.svg') %>"
+              alt="close"
+              class="modal__close-icon"
+            />
+          </button>
+
+          <h2 class="modal__title">Update avatar</h2>
+          <form class="modal__form" name="edit-avatar-form" novalidate>
+            <label for="avatar-link-input" class="modal__label">
+              Avatar URL
+              <input
+                id="avatar-link-input"
+                name="avatar"
+                type="url"
+                class="modal__input"
+                placeholder="https://..."
+                required
+                aria-describedby="avatar-link-input-error"
+              />
+              <span
+                class="modal__input-error"
+                id="avatar-link-input-error"
+                aria-live="polite"
+              ></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div
+        class="modal"
+        id="confirm-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirm-title"
+      >
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn" aria-label="Close">
+            <img
+              src="<%= require('./images/close.svg') %>"
+              alt="close"
+              class="modal__close-icon"
+            />
+          </button>
+
+          <h2 class="modal__title" id="confirm-title">
+            Are you sure you want to delete this image?
+          </h2>
+
+          <form class="modal__form" name="confirm-delete-form">
+            <div class="modal__actions">
+              <button
+                type="submit"
+                class="btn btn--danger"
+                data-loading-text="Deleting…"
+              >
+                Delete
+              </button>
+              <button type="button" class="btn btn--ghost" data-role="cancel">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal modal_type_preview" id="preview-modal">
+        <div class="modal__image-container">
+          <button
+            type="button"
+            class="modal__close-btn modal__close-btn_type_preview"
+          >
+            <img
+              src="<%= require('./images/white_close.svg') %>"
+              alt="close"
+              class="modal__close-icon"
+            />
+          </button>
+          <img src="#" alt="#" class="modal__preview-image" />
+          <p class="modal__caption"></p>
+        </div>
       </div>
     </div>
   </body>

@@ -1,15 +1,19 @@
 function showInputError(formEl, inputEl, message, config) {
   const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.add(config.inputErrorClass);
-  errorEl.textContent = message;
-  errorEl.classList.add(config.errorClass);
+  if (errorEl) {
+    errorEl.textContent = message;
+    errorEl.classList.add(config.errorClass);
+  }
 }
 
 function hideInputError(formEl, inputEl, config) {
   const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.remove(config.inputErrorClass);
-  errorEl.textContent = "";
-  errorEl.classList.remove(config.errorClass);
+  if (errorEl) {
+    errorEl.textContent = "";
+    errorEl.classList.remove(config.errorClass);
+  }
 }
 
 function checkInputValidity(formEl, inputEl, config) {
@@ -25,6 +29,8 @@ function hasInvalidInput(inputList) {
 }
 
 function toggleButtonState(inputList, buttonEl, config) {
+  if (!buttonEl) return;
+
   if (hasInvalidInput(inputList)) {
     buttonEl.classList.add(config.inactiveButtonClass);
     buttonEl.disabled = true;
@@ -37,6 +43,8 @@ function toggleButtonState(inputList, buttonEl, config) {
 function setEventListeners(formEl, config) {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonEl = formEl.querySelector(config.submitButtonSelector);
+
+  if (inputList.length === 0 || !buttonEl) return;
 
   toggleButtonState(inputList, buttonEl, config);
 
@@ -63,6 +71,8 @@ export function resetValidation(
 
   if (resetButtonState) {
     const buttonEl = formEl.querySelector(config.submitButtonSelector);
-    toggleButtonState(inputList, buttonEl, config);
+    if (inputList.length > 0 && buttonEl) {
+      toggleButtonState(inputList, buttonEl, config);
+    }
   }
 }

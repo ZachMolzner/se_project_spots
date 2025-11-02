@@ -9,46 +9,56 @@ class Api {
       throw new Error(t || `HTTP ${res.status}`);
     });
   }
-  _request(path, options = {}) {
+  _request(path, { method = "GET", headers, body } = {}) {
     return fetch(`${this._baseUrl}${path}`, {
-      headers: this._headers,
-      ...options,
+      method,
+      headers: {
+        ...this._headers,
+        ...(body ? { "Content-Type": "application/json" } : {}),
+        ...headers,
+      },
+      body,
     }).then(this._handleResponse);
   }
+
   getUserInfo() {
-    return this._request(`/users/me`, { method: "GET" });
+    return this._request(`/users/me`);
   }
-  updateUserInfo({ name, about }) {
+  updateUserInfo(data) {
     return this._request(`/users/me`, {
       method: "PATCH",
-      headers: { ...this._headers, "Content-Type": "application/json" },
-      body: JSON.stringify({ name, about }),
+      body: JSON.stringify(data),
     });
   }
   updateAvatar(avatar) {
     return this._request(`/users/me/avatar`, {
       method: "PATCH",
-      headers: { ...this._headers, "Content-Type": "application/json" },
       body: JSON.stringify({ avatar }),
     });
   }
+
   getInitialCards() {
-    return this._request(`/cards`, { method: "GET" });
+    return this._request(`/cards`);
   }
   addCard({ name, link }) {
     return this._request(`/cards`, {
       method: "POST",
-      headers: { ...this._headers, "Content-Type": "application/json" },
       body: JSON.stringify({ name, link }),
     });
   }
   deleteCard(id) {
     return this._request(`/cards/${id}`, { method: "DELETE" });
   }
-  changeLikeCardStatus(id, like) {
-    return this._request(`/cards/${id}/likes`, {
-      method: like ? "PUT" : "DELETE",
-    });
+
+  likeCard(id) {
+    return this._request(`/cards/${id}/likes`, { method: "PUT" });
+  }
+  unlikeCard(id) {
+    return this._request(`/cards/${id}/likes`, { method: "DELETE" });
+  }
+
+  getAppData() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 }
 export default Api;
