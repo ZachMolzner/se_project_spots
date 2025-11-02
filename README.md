@@ -14,7 +14,7 @@ An social media site able to house profiles and share pictures.
 
 This webpage is deployed to GitHub Pages
 
-- [Deployment Link](https://syllara123.github.io/se_project_spots)
+- [Deployment Link](https://ZachMolzner.github.io/se_project_spots/)
 
 Video guide
 
