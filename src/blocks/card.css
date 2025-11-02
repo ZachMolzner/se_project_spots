@@ -23,6 +23,7 @@
   justify-content: space-between;
   gap: 12px;
   padding-top: 12px;
+  background-color: #fcf5e5;
 }
 
 .card__title {
@@ -46,16 +47,19 @@
   width: 32px;
   height: 32px;
   border: none;
-  background: rgba(0, 0, 0, 0.45) url(../images/delete.svg) center/16px 16px
-    no-repeat;
-  border-radius: 50%;
+  background: transparent url("../images/delete.svg") no-repeat center / contain;
   cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  z-index: 2;
 }
 
 .card__delete-btn:hover {
-  background-color: rgba(0, 0, 0, 0.65);
-  background-image: url(../images/delete_hover.svg);
+  background-image: url("../images/delete_hover.svg");
+}
+
+.card__delete-btn:active {
+  opacity: 0.5;
+  transform: scale(0.95);
 }
 
 .card__like-btn {
